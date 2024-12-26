@@ -44,7 +44,7 @@ public class ArticleController {
         log.info(saved.toString());
         //System.out.println(saved.toString());
 
-        return "";
+        return "redirect:/articles/" + saved.getId();   // 리다이렉트 경로 넣을 위치
     }
 
     @GetMapping("/articles/{id}")
@@ -70,6 +70,6 @@ public class ArticleController {
         model.addAttribute("articleList", articleEntityList);
 
         // 3. 뷰 페이지 설정하기
-        return "articles/index";
+        return "articles/index";        // 목록으로 돌아가기 링크를 넣을 뷰 파일 확인
     }
 }
