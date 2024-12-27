@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j  // 로깅 기능을 위한 어노테이션 (Simple Logging Facade for Java)
 @Controller
@@ -71,5 +70,17 @@ public class ArticleController {
 
         // 3. 뷰 페이지 설정하기
         return "articles/index";        // 목록으로 돌아가기 링크를 넣을 뷰 파일 확인
+    }
+
+    @GetMapping("/articles/{id}/edit")
+    public String edit(@PathVariable Long id, Model model) {
+        // 수정할 데이터 가져오기
+        Article articleEntity = articleRepository.findById(id).orElse(null);
+
+        // 모델에 데이터 등록하기
+        model.addAttribute("article", articleEntity);
+
+        // 뷰 페이지 설정하기
+        return "articles/edit";
     }
 }
