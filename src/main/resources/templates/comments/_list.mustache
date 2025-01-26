@@ -1,0 +1,12 @@
+<div id="comments-list">
+    {{#commentDtos}}    <!-- 댓글 목록 순회 -->
+        <div class="card m" id="comments-{{id}}">
+            <div class="card-header">
+                {{nickname}}
+            </div>
+            <div class="card-body">
+                {{body}}
+            </div>
+        </div>
+    {{/commentDtos}}
+</div>
